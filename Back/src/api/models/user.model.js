@@ -7,7 +7,11 @@ const {
 } = require("../../utils/validator.util");
 
 const userSchema = new mongoose.Schema({
+  name: { type: String, trim: true, required: true },
+  url: { type: String, trim: true, required: false },
+  Date: { type: Date, trim: true, required: true },
   email: { type: String, trim: true, required: true },
+  rol: { type: String, trim: true, required: false },
   password: { type: String, trim: true, required: true },
 });
 
@@ -25,6 +29,3 @@ userSchema.pre("save", function (next) {
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
-
-
-
