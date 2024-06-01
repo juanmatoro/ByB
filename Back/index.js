@@ -56,9 +56,10 @@ app.use("/album", albumRouter);
 // 3.3 el "coche escoba" -> cualquier ruta que no haya definido pasa por aquí
 //app.use("*", (req, res, next) => next(setError(404, "The route you requested is not part of this API")));
 
-
 // 4. MANEJO DE ERRORES
-app.use((error, req, res, next) => res.status(error.status || 500).json(error.message || "Unexpected error"));
+app.use((error, req, res, next) =>
+  res.status(error.status || 500).json(error.message || "Unexpected error")
+);
 
 app.use((err, req, res, next) => {
   console.error(err.message);
