@@ -10,6 +10,7 @@ const routineSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  
 });
 
 const Routine = mongoose.model("Routine", routineSchema);
