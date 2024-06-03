@@ -9,18 +9,13 @@ const {
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    trim: true,
+    trim: false,
     required: true,
   },
   url: {
     type: String,
     trim: true,
     required: false,
-  },
-  Date: {
-    type: Date,
-    trim: true,
-    required: true,
   },
   email: {
     type: String,

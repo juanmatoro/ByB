@@ -8,17 +8,22 @@ const register = async (req, res, next) => {
   try {
     const user = new User(req.body);
 
+    //console.log(user);
+
     const userExist = await User.findOne({ email: user.email });
     if (userExist) {
       return next(setError("404", "This email has already been used."));
     }
+
     const userDB = await user.save();
+    
     return res.status(201).json({
       status: 201,
       message: `User ${userDB.email} created`,
     });
   } catch (error) {
-    return next(setError(error.statusCode, "User Not Created"));
+    console.error("Error during user registration:", error);
+    return next(setError(error.statusCode || 500, "User Not Created"));
   }
 };
 
