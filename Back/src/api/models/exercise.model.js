@@ -21,10 +21,6 @@ const exerciseSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  // album: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "Album",
-  // },
 });
 
 const Exercise = mongoose.model("Exercise", exerciseSchema);

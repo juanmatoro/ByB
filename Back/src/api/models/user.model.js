@@ -32,6 +32,7 @@ const userSchema = new mongoose.Schema({
     trim: true,
     required: true,
   },
+  
 });
 
 userSchema.pre("save", function (next) {

@@ -29,14 +29,16 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   try {
+    console.log(req.body);
     const userInfo = await User.findOne({ email:req.body.email });
-    console.log(req.body.password);
     console.log(bcrypt.compareSync(req.body.password, userInfo.password));
     if (bcrypt.compareSync(req.body.password, userInfo.password)) {
+  
       userInfo.password = "*************"; // ocultamos el dato password en la respuesta por seguridad
       const token = jwt.sign(
         {
           id: userInfo._id,
+          email: userInfo.email,
           name: userInfo.name,
         },
         process.env.JWT_SECRET,
@@ -54,7 +56,7 @@ const login = async (req, res, next) => {
       });
     }
   } catch (error) {
-    return next(error);
+    return next("error",error);
   }
 };
 
