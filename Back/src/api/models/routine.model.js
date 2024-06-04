@@ -1,20 +1,15 @@
 const mongoose = require("mongoose");
-const User = require("./user.model");
-
-const exerciseSchema = {
-  muscle: { type: String, required: true },
-  exerciseName: { type: String, required: true },
-  execution: { type: String, required: true },
-  reps: { type: String, required: true },
-  url: { type: String, required: true },
-};
+const date = new Date()
+console.log(date);
 
 
+const newdate = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`
 // Definición del esquema del álbum
 const routineSchema = new mongoose.Schema({
   date: {
-    type: Date,
+    type: String,
     required: true,
+    default: newdate,
   },
   comment: {
     type: String,
@@ -24,7 +19,7 @@ const routineSchema = new mongoose.Schema({
     type:mongoose.Schema.Types.ObjectId,
     ref:"User",
   },
-  exercises: [{ type: exerciseSchema }],
+  exercise: [{ type:mongoose.Schema.Types.ObjectId, ref:"Exercise"}],
 });
 
 const Routine = mongoose.model("Routine", routineSchema);
