@@ -8,29 +8,37 @@ const register = async (req, res, next) => {
   try {
     const user = new User(req.body);
 
+    //console.log(user);
+
     const userExist = await User.findOne({ email: user.email });
     if (userExist) {
       return next(setError("404", "This email has already been used."));
     }
+
     const userDB = await user.save();
+    
     return res.status(201).json({
       status: 201,
       message: `User ${userDB.email} created`,
     });
   } catch (error) {
-    return next(setError(error.statusCode, "User Not Created"));
+    console.error("Error during user registration:", error);
+    return next(setError(error.statusCode || 500, "User Not Created"));
   }
 };
 
 const login = async (req, res, next) => {
   try {
-    const userInfo = await User.findOne({ name: req.body.name });
+    console.log(req.body);
+    const userInfo = await User.findOne({ email:req.body.email });
     console.log(bcrypt.compareSync(req.body.password, userInfo.password));
     if (bcrypt.compareSync(req.body.password, userInfo.password)) {
+  
       userInfo.password = "*************"; // ocultamos el dato password en la respuesta por seguridad
       const token = jwt.sign(
         {
           id: userInfo._id,
+          email: userInfo.email,
           name: userInfo.name,
         },
         process.env.JWT_SECRET,
@@ -48,7 +56,7 @@ const login = async (req, res, next) => {
       });
     }
   } catch (error) {
-    return next(error);
+    return next("error",error);
   }
 };
 
