@@ -2,6 +2,7 @@ const Exercise = require("../models/exercise.model");
 const { HTTPSTATUSCODE } = require("../../utils/httpStatusCode");
 
 const createExercise = async (req, res, next) => {
+  console.log(req);
   try {
     const exercise = await Exercise.create(req.body);
     res.status(201).json({
