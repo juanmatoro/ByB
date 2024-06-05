@@ -1,11 +1,16 @@
 const mongoose = require("mongoose");
-const date = new Date()
-console.log(date);
+const date = new Date();
+// console.log(date);
 
-
-const newdate = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`
+const newdate = `${date.getDate()}/${
+  date.getMonth() + 1
+}/${date.getFullYear()}`;
 // Definición del esquema del álbum
 const routineSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
   date: {
     type: String,
     required: true,
@@ -16,10 +21,10 @@ const routineSchema = new mongoose.Schema({
     required: true,
   },
   owner: {
-    type:mongoose.Schema.Types.ObjectId,
-    ref:"User",
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
   },
-  exercise: [{ type:mongoose.Schema.Types.ObjectId, ref:"Exercise"}],
+  exercise: [{ type: mongoose.Schema.Types.ObjectId, ref: "Exercise" }],
 });
 
 const Routine = mongoose.model("Routine", routineSchema);
