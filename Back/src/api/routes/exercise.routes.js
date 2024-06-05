@@ -9,8 +9,8 @@ const {
 } = require("../controllers/exercise.controller");
 const { isAuth } = require("../middlewares/auth.middleware");
 
-exerciseRouter.post("/", createExercise);
-exerciseRouter.get("/", getAllExercises);
+exerciseRouter.post("/createExercise", createExercise);
+exerciseRouter.get("/getExercise", getAllExercises);
 exerciseRouter.get("/:id", getExerciseById);
 exerciseRouter.patch("/:id", updateExercise);
 exerciseRouter.delete("/:id", deleteExercise);

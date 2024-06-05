@@ -1,6 +1,7 @@
 // 1.IMPORTS
 // 1.1 librerias npm
 
+
 const express = require("express");
 const cors = require("cors");
 // 1.2 documentos del proyecto
@@ -71,3 +72,4 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server listening on port : ${PORT}`);
 });
+
