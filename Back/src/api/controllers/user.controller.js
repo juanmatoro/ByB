@@ -31,6 +31,7 @@ const login = async (req, res, next) => {
   try {
     console.log(req.body);
     const userInfo = await User.findOne({ email:req.body.email });
+    console.log(req.body, userInfo)
     console.log(bcrypt.compareSync(req.body.password, userInfo.password));
     if (bcrypt.compareSync(req.body.password, userInfo.password)) {
   
