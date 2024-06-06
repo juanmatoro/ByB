@@ -13,8 +13,8 @@ const exerciseSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  reps: {
-    type: Number,
+  level: {
+    type: String,
     required: true,
   },
   url: {
