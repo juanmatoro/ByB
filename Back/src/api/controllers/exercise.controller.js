@@ -35,7 +35,7 @@ const getExerciseById = async (req, res, next) => {
       res.status(200).json({
         status: 200,
         message: HTTPSTATUSCODE[200],
-        data: track,
+        data: exercise,
       });
     } else {
       res.status(404).json({ status: 404, message: "Exercise not found" });
