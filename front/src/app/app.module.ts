@@ -5,16 +5,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from  '@angular/material/menu' ;
+import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ExerciseComponent } from './pages/exercise/exercise.component';
 import { FavoriteComponent } from './pages/favorite/favorite.component';
 import { HistorialComponent } from './pages/historial/historial.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ExercisecardComponent } from './components/exercisecard/exercisecard.component';
+import { ExerciselistComponent } from './components/exerciselist/exerciselist.component';
+
 
 @NgModule({
   declarations: [
@@ -22,9 +25,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FooterComponent,
     HeaderComponent,
     HomeComponent,
-    ExerciseComponent,
     FavoriteComponent,
-    HistorialComponent
+    HistorialComponent,
+    ExercisecardComponent,
+    ExerciselistComponent,
+   
+
   ],
   imports: [
     BrowserModule,
@@ -34,7 +40,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     MatMenuModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
 
 
 
