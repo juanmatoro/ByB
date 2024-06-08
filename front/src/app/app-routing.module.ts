@@ -7,6 +7,7 @@ import { ExerciselistComponent } from './components/exerciselist/exerciselist.co
 const routes: Routes = [
   { path: '', component: ExercisecardComponent },
   { path: 'lista', component: ExerciselistComponent },
+  { path: "lista/exercise/:id", component:ExercisecardComponent },
   { path: 'prueba', component: FavoriteComponent },
 ];
 

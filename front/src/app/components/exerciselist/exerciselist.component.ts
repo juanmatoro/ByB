@@ -12,6 +12,10 @@ export class ExerciselistComponent {
 
   constructor(private servicio: ExerciseService) {}
 
+
+
+
+
   ngOnInit() {
 
     this.servicio.getExercise().subscribe((res: any) => {
