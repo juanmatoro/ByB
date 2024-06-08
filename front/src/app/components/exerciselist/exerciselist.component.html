@@ -1,1 +1,7 @@
-<p>exerciselist works!</p>
+<section>
+    <div *ngFor="let exercise of exerciseList">
+        <app-exercisecard [exercise]="exercise"></app-exercisecard>
+
+    </div>
+   
+</section>

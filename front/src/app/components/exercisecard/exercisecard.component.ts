@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { Exercise } from 'src/app/models/exercise';
+import { Component, Input } from '@angular/core';
 import { ExerciseService } from 'src/app/pages/service/exercise.service';
 
 @Component({
@@ -8,6 +7,7 @@ import { ExerciseService } from 'src/app/pages/service/exercise.service';
   styleUrls: ['./exercisecard.component.scss']
 })
 export class ExercisecardComponent {
+  @Input() exercise: ExerciseService
 
 
 }

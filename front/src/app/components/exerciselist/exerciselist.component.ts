@@ -14,8 +14,8 @@ export class ExerciselistComponent {
 
   ngOnInit() {
 
-    this.servicio.getExercise().subscribe((data: any) => {
-      this.exerciseList = data;    
+    this.servicio.getExercise().subscribe((res: any) => {
+      this.exerciseList = res.data;    
     });
   }
 }

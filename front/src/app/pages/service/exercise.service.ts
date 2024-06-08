@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Exercise } from 'src/app/models/exercise';
 
 
@@ -9,7 +8,7 @@ import { Exercise } from 'src/app/models/exercise';
   providedIn: 'root'
 })
 export class ExerciseService {
-  private baseUrl: string = 'localhost:4500/exercise';
+  private baseUrl: string = 'http://localhost:4500/exercise';
 
   public exerciseData = {
     id: '',
@@ -23,7 +22,7 @@ export class ExerciseService {
   constructor(private http: HttpClient) { }
 
   getExercise() {
-    return this.http.get(this.baseUrl);
+    return this.http.get(`${this.baseUrl}/getExercise`);
   }
   getExerciseById(id: string) {
     return this.http.get(`${this.baseUrl}/${id}`);

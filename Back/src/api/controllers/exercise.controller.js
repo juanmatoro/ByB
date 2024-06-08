@@ -24,6 +24,7 @@ const getAllExercises = async (req, res, next) => {
       data: exercises,
     });
   } catch (error) {
+    res.status(500).json(error);
     next(error);
   }
 };
