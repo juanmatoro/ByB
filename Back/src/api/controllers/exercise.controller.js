@@ -24,11 +24,13 @@ const getAllExercises = async (req, res, next) => {
       data: exercises,
     });
   } catch (error) {
+    res.status(500).json(error);
     next(error);
   }
 };
 
 const getExerciseById = async (req, res, next) => {
+
   try {
     const exercise = await Exercise.findById(req.params.id);
     if (exercise) {
