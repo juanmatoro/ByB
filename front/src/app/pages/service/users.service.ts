@@ -7,15 +7,8 @@ import { Injectable } from '@angular/core';
 export class UsersService {
   private baseUrl: string = 'http://localhost:4500/users';
 
-  public libroData = {
-    id: '',
-    autor: '',
-    portada: '',
-    titulo: '',
-    year: 1970,
-  };
-
-    constructor(private http: HttpClient) { }
-    
+  constructor(private http: HttpClient) { }
+  
+  
 
 }

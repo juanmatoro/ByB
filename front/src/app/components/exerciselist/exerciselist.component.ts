@@ -20,6 +20,8 @@ export class ExerciselistComponent {
 
     this.servicio.getExercise().subscribe((res: any) => {
       this.exerciseList = res.data;    
+      console.log(this.exerciseList);
+      
     });
   }
 }

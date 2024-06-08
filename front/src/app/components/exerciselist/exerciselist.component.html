@@ -1,7 +1,7 @@
 <section>
     <div *ngFor="let exercise of exerciseList, ; index as i">
         <div class="container-main">
-            <div [routerLink]="['exercise', exercise.id]">
+            <div [routerLink]="[ exercise._id]">
                 <div class="img" >
                     <h2>{{exercise.muscle}}</h2>
                 </div>
