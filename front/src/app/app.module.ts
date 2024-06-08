@@ -17,6 +17,7 @@ import { HistorialComponent } from './pages/historial/historial.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExercisecardComponent } from './components/exercisecard/exercisecard.component';
 import { ExerciselistComponent } from './components/exerciselist/exerciselist.component';
+import { FormComponent } from './components/form/form.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { ExerciselistComponent } from './components/exerciselist/exerciselist.co
     HistorialComponent,
     ExercisecardComponent,
     ExerciselistComponent,
+    FormComponent,
    
 
   ],
