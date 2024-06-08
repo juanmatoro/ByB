@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ExercisecardComponent {
 
-  character: any = {}
+  exercise: any = {}
   id:string =""
 
   constructor( private  service : ExerciseService, private route: ActivatedRoute ){
@@ -20,9 +20,9 @@ export class ExercisecardComponent {
 
 
   ngOnInit(): void {
-    this.service.getExerciseById(this.id).subscribe((response) =>{
-      console.log(response);
-      this.character = response
+    this.service.getExerciseById(this.id).subscribe((res) =>{
+      console.log(res);
+      this.exercise = res
     })
   }
 

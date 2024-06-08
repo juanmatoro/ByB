@@ -11,7 +11,7 @@ export class ExerciseService {
   private baseUrl: string = 'http://localhost:4500/exercise';
 
   public exerciseData = {
-    id: '',
+    _id: '',
     muscle: '',
     exerciseName: '',
     execution: '',
@@ -41,7 +41,7 @@ export class ExerciseService {
   }
   clearData() {
     this.exerciseData = {
-      id: '',
+      _id: '',
       muscle: '',
       exerciseName: '',
       execution: '',
