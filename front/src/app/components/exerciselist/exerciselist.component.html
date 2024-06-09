@@ -1,7 +1,7 @@
-<section>
+<section class="container-fluid">
     <div *ngFor="let exercise of exerciseList, ; index as i">
-        <div class="container-main">
-            <div [routerLink]="[ exercise._id]">
+        <div>
+            <div [routerLink]="[ exercise._id]" class="container-main">
                 <div class="img" >
                     <h2>{{exercise.muscle}}</h2>
                 </div>

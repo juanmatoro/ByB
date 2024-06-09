@@ -2,11 +2,12 @@ import { NgModule, Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatMenuModule} from  '@angular/material/menu' ;
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
-
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './core/footer/footer.component';
@@ -19,7 +20,8 @@ import { ExercisecardComponent } from './components/exercisecard/exercisecard.co
 import { ExerciselistComponent } from './components/exerciselist/exerciselist.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-
+import { MenuIconsComponent } from './core/menu-icons/menu-icons.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,8 +35,7 @@ import { RegisterComponent } from './pages/register/register.component';
     ExerciselistComponent,
     LoginComponent,
     RegisterComponent,
-   
-
+    MenuIconsComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,10 +46,14 @@ import { RegisterComponent } from './pages/register/register.component';
     MatMenuModule,
     BrowserAnimationsModule,
     MatCardModule,
-    HttpClientModule
-
+    HttpClientModule,
+    FormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatCardModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
