@@ -5,18 +5,19 @@ import { ExercisecardComponent } from './components/exercisecard/exercisecard.co
 import { ExerciselistComponent } from './components/exerciselist/exerciselist.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
-  { path: '', component: ExercisecardComponent },
+  { path: '', component: HomeComponent },
   { path: 'lista', component: ExerciselistComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: "lista/:id", component:ExercisecardComponent },
+  { path: 'lista/:id', component: ExercisecardComponent },
   { path: 'prueba', component: FavoriteComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
