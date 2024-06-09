@@ -1,40 +1,40 @@
-const Album = require("../models/album.model");
+const Routine = require("../models/routine.model");
 const { HTTPSTATUSCODE } = require("../../utils/httpStatusCode");
 
-const createAlbum = async (req, res, next) => {
+const createRoutine = async (req, res, next) => {
   try {
-    const album = await Album.create(req.body);
+    const routine = await Routine.create(req.body);
     res.status(201).json({
       status: 201,
       message: HTTPSTATUSCODE[201],
-      data: album,
+      data: routine,
     });
   } catch (error) {
     next(error);
   }
 };
 
-const getAllAlbums = async (req, res, next) => {
+const getAllRoutines = async (req, res, next) => {
   try {
-    const albums = await Album.find();
+    const routines = await Routine.find();
     res.status(200).json({
       status: 200,
       message: HTTPSTATUSCODE[200],
-      data: albums,
+      data: routines,
     });
   } catch (error) {
     next(error);
   }
 };
 
-const getAlbumById = async (req, res, next) => {
+const getRoutineById = async (req, res, next) => {
   try {
-    const album = await Album.findById(req.params.id);
-    if (album) {
+    const routine = await Routine.findById(req.params.id);
+    if (routine) {
       res.status(200).json({
         status: 200,
         message: HTTPSTATUSCODE[200],
-        data: album,
+        data: routine,
       });
     } else {
       res.status(404).json({
@@ -47,16 +47,16 @@ const getAlbumById = async (req, res, next) => {
   }
 };
 
-const updateAlbum = async (req, res, next) => {
+const updateRoutine = async (req, res, next) => {
   try {
-    const album = await Album.findByIdAndUpdate(req.params.id, req.body, {
+    const routine = await Routine.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
-    if (album) {
+    if (routine) {
       res.status(200).json({
         status: 200,
         message: HTTPSTATUSCODE[200],
-        data: album,
+        data: routine,
       });
     } else {
       res.status(404).json({
@@ -69,10 +69,10 @@ const updateAlbum = async (req, res, next) => {
   }
 };
 
-const deleteAlbum = async (req, res, next) => {
+const deleteRoutine = async (req, res, next) => {
   try {
-    const album = await Album.findByIdAndDelete(req.params.id);
-    if (album) {
+    const routine = await Routine.findByIdAndDelete(req.params.id);
+    if (routine) {
       res.status(204).json({
         status: 204,
         message: HTTPSTATUSCODE[204],
@@ -89,9 +89,9 @@ const deleteAlbum = async (req, res, next) => {
 };
 
 module.exports = {
-  createAlbum,
-  getAllAlbums,
-  getAlbumById,
-  updateAlbum,
-  deleteAlbum,
+  createRoutine,
+  getAllRoutines,
+  getRoutineById,
+  updateRoutine,
+  deleteRoutine,
 };

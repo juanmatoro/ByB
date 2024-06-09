@@ -1,6 +1,7 @@
 // 1.IMPORTS
 // 1.1 librerias npm
 
+
 const express = require("express");
 const cors = require("cors");
 // 1.2 documentos del proyecto
@@ -8,8 +9,8 @@ const { connectMongo } = require("./src/data/mongo");
 //const { configCloudinary } = require("./src/utils/cloudinary/config");
 // 1.3 las rutas:
 const userRouter = require("./src/api/routes/user.routes");
-const trackRouter = require("./src/api/routes/track.routes");
-const albumRouter = require("./src/api/routes/album.routes");
+const exerciseRouter = require("./src/api/routes/exercise.routes");
+const routineRouter = require("./src/api/routes/routine.routes");
 const { setError } = require("./src/utils/error.util");
 
 // 2. CONFIG
@@ -51,8 +52,8 @@ app.get("/", (req, res) => {
 });
 // 3.2 las rutas de mis datos
 app.use("/user", userRouter);
-app.use("/track", trackRouter);
-app.use("/album", albumRouter);
+app.use("/exercise", exerciseRouter);
+app.use("/routine", routineRouter);
 // 3.3 el "coche escoba" -> cualquier ruta que no haya definido pasa por aquí
 //app.use("*", (req, res, next) => next(setError(404, "The route you requested is not part of this API")));
 
@@ -71,3 +72,4 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server listening on port : ${PORT}`);
 });
+

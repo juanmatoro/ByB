@@ -1,0 +1,20 @@
+<section class="container-fluid">
+    <div *ngFor="let exercise of exerciseList, ; index as i">
+        <div>
+            <div [routerLink]="[ exercise._id]" class="container-main">
+                <div class="img" >
+                    <h2>{{exercise.muscle}}</h2>
+                </div>
+                <div class="middle">
+                    <div>
+                        <h2>{{exercise.exerciseName}}</h2>
+                    </div>
+                    <div><h3>{{exercise.level}}</h3></div>
+                </div>
+            </div>
+            
+            <div class="botones"></div>
+        </div>
+    </div>
+   
+</section>
