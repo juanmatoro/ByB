@@ -54,6 +54,7 @@ import { SafeUrlPipe } from './safe-url.pipe';
     MatButtonModule,
     MatFormFieldModule,
     MatCardModule,
+ 
   ],
   providers: [],
   bootstrap: [AppComponent],
