@@ -16,7 +16,7 @@
         <div *ngIf="password.errors?.['required']">Password is required.</div>
       </mat-error>
     </mat-form-field>
-
-    <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Register</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Login</button>
+    <button type="submit" onclick="window.location.href='http://localhost:4200/register'" class="btn btn-primary">Sign up</button>
   </form>
 </mat-card>

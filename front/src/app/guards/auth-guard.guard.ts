@@ -13,9 +13,7 @@ export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: R
     console.log('Token inexistente');
     return protectedRoutes.includes(state.url) && !session ? router.navigate(['/login']) : false;
   }else{
-    
+
     return true;
   }
-
-  return protectedRoutes.includes(state.url) && !session ? router.navigate(['/login']) : false
 };

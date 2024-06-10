@@ -75,6 +75,7 @@ const logout = (req, res, next) => {
 
 const checksession = (req, res, next) =>{
   try {
+    console.log(req);
     return res.status(200),json(req.user)
   } catch (error) {
     return res.status(500).json(error)
