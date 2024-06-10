@@ -1,21 +1,5 @@
-<section class="container-fluid">
-  <!-- <div *ngFor="let exercise of exerciseList, ; index as i">
-        <div>
-            <div [routerLink]="[ exercise._id]" class="container-main">
-                <div class="img" >
-                    <h2>{{exercise.muscle}}</h2>
-                </div>
-                <div class="middle">
-                    <div>
-                        <h2>{{exercise.exerciseName}}</h2>
-                    </div>
-                    <div><h3>{{exercise.level}}</h3></div>
-                </div>
-            </div>
-            
-            <div class="botones"></div>
-        </div>
-    </div> -->
+<section class="container">
+  
   <div
     *ngFor="let exercise of exerciseList"
     class="exercise-item"
@@ -24,16 +8,12 @@
     <mat-card>
       <mat-card-header>
         <mat-card-title>{{ exercise.exerciseName }}</mat-card-title>
-        <mat-card-subtitle>{{ exercise.muscle }}</mat-card-subtitle>
+        <mat-card-subtitle><span>Nivel: </span>{{ exercise.level }}</mat-card-subtitle>
         <mat-icon>{{ muscleIcons[exercise.muscle] }}</mat-icon>
       </mat-card-header>
       <mat-card-content>
-        <p>{{ exercise.level }}</p>
-        <img
-          mat-card-image
-          [src]="[exercise.image]"
-          alt="{{ exercise.exerciseName }}"
-        />
+        
+        <img mat-card-image [src]="[exercise.image]" alt="{{ exercise.muscle }}" class="img-list" title="{{ exercise.muscle }}"/>
       </mat-card-content>
     </mat-card>
   </div>
