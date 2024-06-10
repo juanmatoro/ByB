@@ -8,4 +8,10 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './menu-icons.component.html',
   styleUrls: ['./menu-icons.component.scss'],
 })
-export class MenuIconsComponent {}
+export class MenuIconsComponent {
+
+
+
+
+  
+}
