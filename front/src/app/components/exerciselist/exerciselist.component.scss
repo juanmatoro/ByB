@@ -9,3 +9,21 @@
 .cont-list-ppal{
     display: flex;
 }
+.exercise-item {
+    margin-bottom: 16px;
+    cursor: pointer;
+   
+  }
+  
+  mat-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+    color: azure;
+  }
+  
+  mat-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
