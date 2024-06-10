@@ -22,6 +22,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { MenuIconsComponent } from './core/menu-icons/menu-icons.component';
 import { FormsModule } from '@angular/forms';
+import { SafeUrlPipe } from './safe-url.pipe';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     MenuIconsComponent,
+    SafeUrlPipe,
   ],
   imports: [
     BrowserModule,
