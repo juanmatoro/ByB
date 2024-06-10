@@ -5,4 +5,5 @@ export interface Exercise {
     execution: string;
     level: string;
     url: string;
+    image: string;
 }

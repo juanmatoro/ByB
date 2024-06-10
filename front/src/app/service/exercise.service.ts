@@ -17,6 +17,7 @@ export class ExerciseService {
     execution: '',
     level: "",
     url: "",
+    image: "",
   };
 
   constructor(private http: HttpClient) { }
@@ -47,6 +48,7 @@ export class ExerciseService {
       execution: '',
       level: "",
       url: "",
+      image: "",
     };
   }
 
