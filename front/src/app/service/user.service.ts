@@ -7,11 +7,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  private baseUrl = 'http://localhost:4500';
+  private baseUrl = 'http://localhost:4500/user';
 
   constructor(private http: HttpClient) {}
 
   register(user: User): Observable<User> {
     return this.http.post<User>(`${this.baseUrl}/register`, user);
+  }
+
+  login(user: User): Observable<User> {
+    return this.http.post<User>(`${this.baseUrl}/login`, user);
   }
 }
