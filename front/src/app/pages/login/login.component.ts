@@ -9,7 +9,7 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  
+
 
   user: User = {
     email: '',

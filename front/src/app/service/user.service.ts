@@ -24,5 +24,5 @@ export class UserService {
     return this.http.post(`${this.baseUrl}/checksession`, token);
   }
 
-  
 }
+

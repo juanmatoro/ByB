@@ -23,6 +23,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { MenuIconsComponent } from './core/menu-icons/menu-icons.component';
 import { FormsModule } from '@angular/forms';
 import { SafeUrlPipe } from './safe-url.pipe';
+import { ExerciseListComponent } from './components/exercise-list/exercise-list.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { SafeUrlPipe } from './safe-url.pipe';
     RegisterComponent,
     MenuIconsComponent,
     SafeUrlPipe,
+    ExerciseListComponent,
   ],
   imports: [
     BrowserModule,
