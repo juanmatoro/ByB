@@ -1,47 +1,31 @@
-/* 
-* Este middleware genera y lee el token que usaremos para autenticación.
-*
-*/
+const User = require("../models/user.model");
+const {verifySign} = require('../../utils/jwt')
 
-const jwt = require("jsonwebtoken");
+const isAuth = async(req,res,next) => {
+    try {
+        const authorization = req.headers.authorization;
+        console.log(req.headers.authorization);
+        if (!authorization) {
+            return res.status(401).json({message:"no estas autorizado campeon"})
+        }
 
-const isAuth = (req, res, next) => {
-  const authorization = req.headers.authorization;
-  const secret = req.app.get("secretKey") || process.env.JWT_SECRET;
+        // console.log(req.headers.authorization);
+        // mi autorization es Bearer xxxxx -> hago un split para qeudarme con el xxxx
+        const token = authorization.split(" ")[1];
 
-  if (!authorization) {
-    return res.json({
-      status: 401,
-      message: "Unauthorized",
-      data: null,
-    });
-  }
-
-  const splits = authorization.split(" ");
-  if (splits.length != 2 || splits[0] != "Bearer") {
-    return res.json({
-      status: 400,
-      message: "Bad Request",
-      data: null,
-    });
-  }
-
-  const jwtString = splits[1];
-
-  try {
-    var token = jwt.verify(jwtString, secret);
-  } catch (error) {
-    return next(error);
-  }
-
-  const authority = {
-    id: token.id,
-    name: token.name,
-  };
-  req.authority = authority;
-  next();
-};
-
-module.exports = {
-  isAuth,
-};
+        if (!token) {
+            return res.status(401).json({message:"token invalido"})
+        }
+        const tokenVerified = verifySign(token);
+         console.log(tokenVerified);
+        if (!tokenVerified.id) {
+            return res.status(401).json(tokenVerified);
+        }
+        const userLogged = await User.findById(tokenVerified.id)
+        req.user = userLogged;
+        next()
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+}
+module.exports ={isAuth}
