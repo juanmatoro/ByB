@@ -1,0 +1,14 @@
+<div class="exercise-list-container">
+    <mat-card
+      *ngFor="let exercise of exercises; let i = index"
+      class="exercise-item"
+    >
+      <mat-card-header class="exercise-header">
+        <mat-card-title>{{ exercise.data.exerciseName }}</mat-card-title>
+        <mat-card-subtitle>{{ exercise.data.muscle }}</mat-card-subtitle>
+        <button mat-button (click)="removeExercise(i)" class="remove-button">
+          Eliminar
+        </button>
+      </mat-card-header>
+    </mat-card>
+  </div>
