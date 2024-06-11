@@ -2,9 +2,16 @@
     max-width: 400px;
     margin: 2rem auto;
     padding: 2rem;
-  }
+    background-image: url('../../../assets/home.jpg'); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+   }
 
   form {
     display: flex;
     flex-direction: column;
   }
+
+  
