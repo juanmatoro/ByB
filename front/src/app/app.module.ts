@@ -26,6 +26,7 @@ import { SafeUrlPipe } from './safe-url.pipe';
 import { ExerciseListComponent } from './components/exercise-list/exercise-list.component';
 import { authGuard } from './guards/auth-guard.guard';
 import { AuthInterceptor } from './guards/auth.interceptor';
+import { RoutinelistComponent } from './components/routinelist/routinelist.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { AuthInterceptor } from './guards/auth.interceptor';
     MenuIconsComponent,
     SafeUrlPipe,
     ExerciseListComponent,
+    RoutinelistComponent,
   ],
   imports: [
     BrowserModule,
