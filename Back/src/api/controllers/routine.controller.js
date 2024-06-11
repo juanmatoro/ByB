@@ -4,6 +4,11 @@ const { HTTPSTATUSCODE } = require("../../utils/httpStatusCode");
 const createRoutine = async (req, res, next) => {
   try {
     const routine = await Routine.create(req.body);
+    const updateUser = await User.findByIdAndUpdate(
+      req.user._id,
+      { $push: { favRoutines: routine._id } },
+      { new: true }
+    );
     res.status(201).json({
       status: 201,
       message: HTTPSTATUSCODE[201],
@@ -16,7 +21,7 @@ const createRoutine = async (req, res, next) => {
 
 const getAllRoutines = async (req, res, next) => {
   try {
-    const routines = await Routine.find();
+    const routines = await Routine.findById(req.user._id).populate("exercises"); //el req.user._id debe venir del isAuth//
     res.status(200).json({
       status: 200,
       message: HTTPSTATUSCODE[200],
