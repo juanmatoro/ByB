@@ -29,9 +29,4 @@ export class UserService {
     return this.http.get<any>(`${this.baseUrl}/checksession`, { headers });
   }
 
-/*   checksession(token: any): Observable<any> {
-    return this.http.get(`${this.baseUrl}/checksession`, token);
-  } */
 
-  
-}
