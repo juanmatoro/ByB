@@ -1,6 +1,6 @@
 import { User } from '../models/user';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -20,9 +20,18 @@ export class UserService {
     return this.http.post(`${this.baseUrl}/login`, user);
   }
 
-  checksession(token: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/checksession`, token);
+  
+  checksession(token: string | null): Observable<any> {
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+    return this.http.get<any>(`${this.baseUrl}/checksession`, { headers });
   }
+
+/*   checksession(token: any): Observable<any> {
+    return this.http.get(`${this.baseUrl}/checksession`, token);
+  } */
 
   
 }
