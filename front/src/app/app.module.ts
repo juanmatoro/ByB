@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'; 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +22,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { MenuIconsComponent } from './core/menu-icons/menu-icons.component';
 import { FormsModule } from '@angular/forms';
+import { SafeUrlPipe } from './safe-url.pipe';
+import { ExerciseListComponent } from './components/exercise-list/exercise-list.component';
+import { authGuard } from './guards/auth-guard.guard';
+import { AuthInterceptor } from './guards/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,8 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     MenuIconsComponent,
+    SafeUrlPipe,
+    ExerciseListComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +59,9 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatCardModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

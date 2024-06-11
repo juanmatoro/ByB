@@ -9,3 +9,68 @@
 .cont-list-ppal{
     display: flex;
 }
+.exercise-item {
+    margin-bottom: 16px;
+    cursor: pointer;
+   
+   
+  }
+  
+  mat-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    background-color: #000;
+    color: azure;
+  }
+
+  mat-card-subtitle {
+    color: azure;
+  }
+  
+  mat-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  mat-card-content {
+    width: 200px !important;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:16px !important ;
+  }
+  .img-list {
+    max-width: 70%;
+    height: auto;
+    
+  }
+
+  .search-bar {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-bar input[type="text"] {
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .search-bar button {
+    padding: 8px 16px;
+    margin-left: 10px;
+    background-color: #572bc0;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .search-bar button:hover {
+    background-color: #45a049;
+  }

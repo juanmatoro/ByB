@@ -6,14 +6,15 @@ import { ExerciselistComponent } from './components/exerciselist/exerciselist.co
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
+import { authGuard } from './guards/auth-guard.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'lista', component: ExerciselistComponent },
+  { path: 'lista', component: ExerciselistComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'lista/:id', component: ExercisecardComponent },
-  { path: 'prueba', component: FavoriteComponent },
+  { path: 'prueba', component: FavoriteComponent, canActivate:[authGuard]},
 ];
 
 @NgModule({

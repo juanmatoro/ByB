@@ -1,20 +1,37 @@
-<section class="container-fluid">
-    <div *ngFor="let exercise of exerciseList, ; index as i">
-        <div>
-            <div [routerLink]="[ exercise._id]" class="container-main">
-                <div class="img" >
-                    <h2>{{exercise.muscle}}</h2>
-                </div>
-                <div class="middle">
-                    <div>
-                        <h2>{{exercise.exerciseName}}</h2>
-                    </div>
-                    <div><h3>{{exercise.level}}</h3></div>
-                </div>
-            </div>
-            
-            <div class="botones"></div>
-        </div>
-    </div>
-   
+<section class="container">
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Buscar por músculo..."
+      [(ngModel)]="searchMuscle"
+      (keyup.enter)="filterByMuscle(searchMuscle)"
+    />
+
+    <button (click)="filterByMuscle(searchMuscle)">Buscar</button>
+    <button (click)="resetFilter()">Reset</button>
+  </div>
+  <div
+    *ngFor="let exercise of filteredExerciseList"
+    class="exercise-item"
+    [routerLink]="[exercise._id]"
+  >
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ exercise.exerciseName }}</mat-card-title>
+        <mat-card-subtitle
+          ><span>Nivel: </span>{{ exercise.level }}</mat-card-subtitle
+        >
+        <mat-icon>{{ muscleIcons[exercise.muscle] }}</mat-icon>
+      </mat-card-header>
+      <mat-card-content>
+        <img
+          mat-card-image
+          [src]="exercise.image"
+          alt="{{ exercise.muscle }}"
+          class="img-list"
+          title="{{ exercise.muscle }}"
+        />
+      </mat-card-content>
+    </mat-card>
+  </div>
 </section>

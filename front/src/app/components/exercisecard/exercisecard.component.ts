@@ -1,29 +1,34 @@
+import { ExerciseService } from 'src/app/service/exercise.service';
 import { Component, OnInit } from '@angular/core';
-import { ExerciseService } from 'src/app/pages/service/exercise.service';
 import { ActivatedRoute } from '@angular/router';
+import { ExerciseCartService } from 'src/app/service/exercise-cart.service';
 
 @Component({
   selector: 'app-exercisecard',
   templateUrl: './exercisecard.component.html',
-  styleUrls: ['./exercisecard.component.scss']
+  styleUrls: ['./exercisecard.component.scss'],
 })
-export class ExercisecardComponent {
+export class ExercisecardComponent implements OnInit {
+  exercise: any = {};
+  id: string = '';
 
-  exercise: any = {}
-  id:string =""
-
-  constructor( private  service : ExerciseService, private route: ActivatedRoute ){
-    this.route.params.subscribe((params)=>{console.log(params);
-      this.id = params['id']
-    })
+  constructor(
+    private service: ExerciseService,
+    private route: ActivatedRoute,
+    private exerciseCartService: ExerciseCartService
+  ) {
+    this.route.params.subscribe((params) => {
+      this.id = params['id'];
+    });
   }
-
 
   ngOnInit(): void {
-    this.service.getExerciseById(this.id).subscribe((res) =>{
-      console.log(res);
-      this.exercise = res
-    })
+    this.service.getExerciseById(this.id).subscribe((res) => {
+      this.exercise = res;
+    });
   }
 
+  addToRoutine() {
+    this.exerciseCartService.addExercise(this.exercise);
+  }
 }

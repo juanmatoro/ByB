@@ -25,10 +25,12 @@ connectMongo();
 // 2.2 cabeceras (https://developer.mozilla.org/en-US/docs/Web/API/Headers)
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, PATCH");
-  res.header("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Credentials", 'true');
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
+
 });
+
 // 2.3 cors (https://developer.mozilla.org/es/docs/Web/HTTP/CORS)
 app.use(cors()); // no hay restricciones
 /*

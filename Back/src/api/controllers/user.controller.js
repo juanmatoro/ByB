@@ -29,10 +29,10 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   try {
-    console.log(req.body);
+   /*  console.log(req.body); */
     const userInfo = await User.findOne({ email:req.body.email });
-    console.log(req.body, userInfo)
-    console.log(bcrypt.compareSync(req.body.password, userInfo.password));
+    /* console.log(req.body, userInfo) */
+    //(bcrypt.compareSync(req.body.password, userInfo.password));
     if (bcrypt.compareSync(req.body.password, userInfo.password)) {
   
       userInfo.password = "*************"; // ocultamos el dato password en la respuesta por seguridad
@@ -73,4 +73,12 @@ const logout = (req, res, next) => {
   }
 };
 
-module.exports = { register, login, logout };
+const checksession = (req, res) =>{
+  try {
+    console.log("Token Session",req);
+    return res.status(200).json(req.user)
+  } catch (error) {
+    return res.status(500).json(error)
+  }
+}
+module.exports = { register, login, logout, checksession };

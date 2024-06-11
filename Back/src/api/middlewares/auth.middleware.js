@@ -1,47 +1,34 @@
-/* 
-* Este middleware genera y lee el token que usaremos para autenticación.
-*
-*/
+const User = require("../models/user.model");
+const {verifySign} = require('../../utils/jwt')
 
-const jwt = require("jsonwebtoken");
+const isAuth = async(req,res,next) => { /* esta función verifica el TOKEN del usuario, si el TOKEN que recibimos no se verifica con nuestra JWK_KEY no tiene acesso a lo que tenga 'isAuth' por ejemplo: userRoutes.get('/consulta', isAuth, consultaUsers), si el token que envía el usuario al hacer login no es correcto, no podrá hacer un get de user porque no podrá iniciar sesión. Por eso lo teníamos en logOut porque si el token no es correcto no puedes terminar el login así que no puedes hacer logout*/
 
-const isAuth = (req, res, next) => {
-  const authorization = req.headers.authorization;
-  const secret = req.app.get("secretKey") || process.env.JWT_SECRET;
+    try {
+        const authorization = req.headers.authorization;
+        if(!authorization){ /* si no hay autorización ... mensaje error */ 
+            return res.status(401).json({message:"No estás autorizado."})
+        }
+        const token = authorization.split(" ")[1] /* si está autorizado ... limpiamos el token, recibimos = Bearer <token> -> hacemos un split para quedarnos solo con el token limpio */
 
-  if (!authorization) {
-    return res.json({
-      status: 401,
-      message: "Unauthorized",
-      data: null,
-    });
-  }
+        if(!token){/* si no existe o no cuadra con nuestro token... mensaje error */
+            return res.status(401).json({message:"Token invalido."})
+        }
+        const tokenVerified = verifySign(token); /* si el token existe... verifica el token con la llave que le hemos dado*/
 
-  const splits = authorization.split(" ");
-  if (splits.length != 2 || splits[0] != "Bearer") {
-    return res.json({
-      status: 400,
-      message: "Bad Request",
-      data: null,
-    });
-  }
+        if(!tokenVerified.id){ /* si el token desencryptado no devuelve una id, mensaje de error, me enseñas el token que has intentado desencryptar */
+            return res.status(401).json(tokenVerified);
+        }
+        const userLogged = await User.findById(tokenVerified.id) /* todo va bien? usuario loggeado, comprobar que el usuario existe buscando por id */
+        req.user = userLogged /* existe? pues está loggeado */
+        
+        /* console.log(tokenVerified.id) */
+        next() /* passa a la siguiente funcion */
 
-  const jwtString = splits[1];
-
-  try {
-    var token = jwt.verify(jwtString, secret);
-  } catch (error) {
-    return next(error);
-  }
-
-  const authority = {
-    id: token.id,
-    name: token.name,
-  };
-  req.authority = authority;
-  next();
-};
+    } catch (error) { /* que algo va mal? */ 
+        return res.status(500).json(error); /* pues nos dices el que. */
+    }
+}
 
 module.exports = {
-  isAuth,
-};
+    isAuth,
+}
