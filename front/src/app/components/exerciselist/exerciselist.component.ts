@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
 import { Exercise } from 'src/app/models/exercise';
 import { ExerciseService } from 'src/app/service/exercise.service';
 
@@ -12,20 +9,40 @@ import { ExerciseService } from 'src/app/service/exercise.service';
 })
 export class ExerciselistComponent {
   exerciseList: Exercise[] = [];
-  // Mapa de tipos de músculos a nombres de iconos de Material
+  filteredExerciseList: Exercise[] = [];
+  predefinedMuscles: string[] = ['pecho', 'espalda', 'bíceps', 'tríceps', 'pierna', 'abdomen', ];
   muscleIcons: { [key: string]: string } = {
     brazo: 'fitness_center',
     pierna: 'directions_walk',
     espalda: 'accessibility_new',
     pecho: 'favorite',
-    // agrega más mapeos según sea necesario
+    // Agrega más mapeos según sea necesario
   };
+  searchMuscle: string = '';
+
   constructor(private servicio: ExerciseService) {}
 
   ngOnInit() {
     this.servicio.getExercise().subscribe((res: any) => {
       this.exerciseList = res.data;
-      console.log(this.exerciseList);
+      this.filteredExerciseList = [...this.exerciseList];
     });
+  }
+
+  normalizeMuscle(muscle: string): string {
+    return muscle.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  }
+
+  filterByMuscle(muscle: string) {
+    const normalizedMuscle = this.normalizeMuscle(muscle);
+    this.filteredExerciseList = this.exerciseList.filter(exercise => {
+      const normalizedExerciseMuscle = this.normalizeMuscle(exercise.muscle);
+      return normalizedExerciseMuscle.includes(normalizedMuscle);
+    });
+  }
+
+  resetFilter() {
+    this.filteredExerciseList = [...this.exerciseList];
+    this.searchMuscle = '';
   }
 }
