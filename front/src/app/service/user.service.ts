@@ -38,7 +38,7 @@ export class UserService {
       Authorization: `Bearer ${token}`,
     });
 
-    return this.http.get<any>(`${this.baseUrl}/me`, { headers });
+    return this.http.get<any>(`${this.baseUrl}`, { headers });
   }
   getUserById(id: string) {
     return this.http.get(`${this.baseUrl}/me/${id}`);
