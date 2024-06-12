@@ -1,1 +1,8 @@
-<p>routinelist works!</p>
+<div class="routinelist">
+    <h1>Selected Exercises</h1>
+    <div *ngFor="let exercise of selectedExercises" class="exercise-item">
+      <p>{{ exercise.name }}</p>
+      <!-- Agrega más detalles del ejercicio según tu modelo -->
+    </div>
+  </div>
+  

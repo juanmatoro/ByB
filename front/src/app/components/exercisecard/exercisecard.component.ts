@@ -1,12 +1,12 @@
-import { ExerciseService } from 'src/app/service/exercise.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ExerciseCartService } from 'src/app/service/exercise-cart.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ExerciseService } from '../../service/exercise.service';
+import { ExerciseCartService } from '../../service/exercise-cart.service';
 
 @Component({
   selector: 'app-exercisecard',
   templateUrl: './exercisecard.component.html',
-  styleUrls: ['./exercisecard.component.scss'],
+  styleUrls: ['./exercisecard.component.scss']
 })
 export class ExercisecardComponent implements OnInit {
   exercise: any = {};
@@ -15,21 +15,25 @@ export class ExercisecardComponent implements OnInit {
   constructor(
     private service: ExerciseService,
     private route: ActivatedRoute,
+    private router: Router,
     private exerciseCartService: ExerciseCartService
-  ) {
-    this.route.params.subscribe((params) => {
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
       this.id = params['id'];
+      this.loadExercise(this.id);
     });
   }
 
-  ngOnInit(): void {
-    this.service.getExerciseById(this.id).subscribe((res) => {
+  loadExercise(id: string): void {
+    this.service.getExerciseById(id).subscribe((res) => {
       this.exercise = res;
     });
   }
 
-  addToRoutine() {
-    console.log(this.exercise);
+  addToRoutine(): void {
     this.exerciseCartService.addExercise(this.exercise.data);
+    this.router.navigate(['/routines']); // Navega a la página de rutinas
   }
 }
