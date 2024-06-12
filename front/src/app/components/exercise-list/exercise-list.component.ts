@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Routine } from 'src/app/models/routine';
 import { ExerciseService } from './../../service/exercise.service';
 import { RoutinesService } from './../../service/routines.service';
@@ -11,11 +12,11 @@ import { ExerciseCartService } from 'src/app/service/exercise-cart.service';
   styleUrls: ['./exercise-list.component.scss'],
 })
 export class ExerciseListComponent implements OnInit {
+  isVisible: boolean = true;
+
   exercises: any[] = [];
 
-
-
-  constructor(private exerciseCartService: ExerciseCartService, private RoutinesService: RoutinesService
+  constructor(private exerciseCartService: ExerciseCartService, private RoutinesService: RoutinesService, private router: Router
   ) {}
 
   ngOnInit(): void { 
@@ -45,6 +46,11 @@ export class ExerciseListComponent implements OnInit {
         console.log(res);
         
       });
+    }
+
+    navigateToRoutineList() {
+      this.router.navigate(['/routine-list']);
+      this.isVisible = false; // Oculta el componente
     }
    
 }

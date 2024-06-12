@@ -24,5 +24,5 @@ export class ExerciseCartService {
 
   removeExercise(index: number) {
     this.exercises.splice(index, 1);
-  }
+  } 
 }

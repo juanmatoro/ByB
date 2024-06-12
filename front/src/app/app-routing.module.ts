@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'lista/:id', component: ExercisecardComponent },
-  {path: 'routines', component: RoutinelistComponent},
+  {path: 'routine-list', component: RoutinelistComponent},
   { path: 'prueba', component: FavoriteComponent, canActivate:[authGuard]},
 ];
 
