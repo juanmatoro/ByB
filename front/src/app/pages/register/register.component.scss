@@ -1,17 +1,20 @@
 .register-card {
-    max-width: 400px;
-    margin: 2rem auto;
-    padding: 2rem;
-   /*  background-image: url('../../../assets/home.jpg'); 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; */
-
-   }
+  max-width: 500px; 
+  margin: auto; 
+  padding: 2rem;
+}
 
   form {
     display: flex;
     flex-direction: column;
+  }
+
+  .register-component {
+    height: 100vh; 
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    
   }
 
 
