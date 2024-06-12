@@ -1,3 +1,4 @@
+import { Routine } from 'src/app/models/routine';
 import { ExerciseService } from './../../service/exercise.service';
 import { RoutinesService } from './../../service/routines.service';
 // exercise-list.component.ts
@@ -30,16 +31,21 @@ export class ExerciseListComponent implements OnInit {
     this.exercises = this.exerciseCartService.getExercises(); // Actualizar la lista después de eliminar
   }
 
-  // onSubmit(): void {
-  //   this.RoutinesService.createRoutine(this.exerciseCartService._id).subscribe(
-  //     (res) => {
-  //       console.log(res.data.token);
-  //       sessionStorage.setItem('token', res.data.token)
-  //       this.router.navigate(['/prueba'])
-  //     },
-  //     (err) => {
-  //       console.error('There was an error during the registration', err);
-  //     }
-  //   );
-  }
-// }
+    onSubmit(): void {
+      const ids = this.exercises.map(objeto => objeto._id);
+      const userId = sessionStorage.getItem('id')
+      const token = sessionStorage.getItem('token')
+      const newRoutine: Routine = {
+        name: '', // Puedes obtener este valor de un formulario, por ejemplo
+        date: '', // Fecha actual, puedes ajustarla según sea necesario
+        comment: 'Esta es una nueva rutina', // Puedes obtener este valor de un formulario
+        owner: userId, // ID del dueño, puedes obtener este valor según tu lógica de negocio
+        exercise: this.exercises.map(exercise => exercise._id),
+      };
+      this.RoutinesService.createRoutine(newRoutine, token).subscribe((res) => {
+        console.log(res);
+        
+      });
+    }
+   
+}
