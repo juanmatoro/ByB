@@ -27,7 +27,7 @@ export class LoginComponent {
         sessionStorage.setItem('token', res.data.token)
         sessionStorage.setItem('name', res.data.user.name)
         sessionStorage.setItem('id', res.data.user._id)
-        this.router.navigate(['/prueba'])
+        this.router.navigate(['/lista'])
       },
       (err) => {
         console.error('There was an error during the registration', err);
