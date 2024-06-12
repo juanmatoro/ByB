@@ -33,8 +33,13 @@ export class RoutinesService {
     return this.http.post(`${this.baseUrl}/createroutine`, newRoutine, options);
   }
 
-  getRoutines(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/getRoutines`);
+  getRoutines(token: string | null): Observable<any> {
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+    const options = { headers: headers }; // Objeto de opciones con los encabezados
+    return this.http.get(`${this.baseUrl}/getRoutines`, options);
   }
 
   

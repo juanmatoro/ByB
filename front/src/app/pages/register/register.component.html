@@ -50,10 +50,13 @@
         <mat-error
           *ngIf="password.invalid && (password.dirty || password.touched)"
         >
+  
           <div *ngIf="password.errors?.['required']">Password is required.</div>
         </mat-error>
       </mat-form-field>
-
+      <div *ngIf="passwordError" style="color: red;">
+        {{ passwordError }}
+      </div>
       <button
         mat-flat-button
         color="primary"
