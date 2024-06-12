@@ -20,15 +20,14 @@ export class ExerciseListComponent implements OnInit {
 
   ngOnInit(): void { 
     console.log(this.exercises);
-    // Inicializar la lista de ejercicios desde el servicio
     this.exercises = this.exerciseCartService.getExercises();
   }
  
 
-  // Método para eliminar un ejercicio
+  
   removeExercise(index: number): void {
     this.exerciseCartService.removeExercise(index);
-    this.exercises = this.exerciseCartService.getExercises(); // Actualizar la lista después de eliminar
+    this.exercises = this.exerciseCartService.getExercises(); 
   }
 
     onSubmit(): void {
@@ -36,10 +35,10 @@ export class ExerciseListComponent implements OnInit {
       const userId = sessionStorage.getItem('id')
       const token = sessionStorage.getItem('token')
       const newRoutine: Routine = {
-        name: '', // Puedes obtener este valor de un formulario, por ejemplo
-        date: '', // Fecha actual, puedes ajustarla según sea necesario
-        comment: 'Esta es una nueva rutina', // Puedes obtener este valor de un formulario
-        owner: userId, // ID del dueño, puedes obtener este valor según tu lógica de negocio
+        name: '', 
+        date: '', 
+        comment: 'Esta es una nueva rutina', 
+        owner: userId, 
         exercise: this.exercises.map(exercise => exercise._id),
       };
       this.RoutinesService.createRoutine(newRoutine, token).subscribe((res) => {
