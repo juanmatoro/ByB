@@ -10,8 +10,11 @@ export class RoutinelistComponent {
 
   constructor(private servicio: RoutinesService) {}
 
+
+
   ngOnInit() {
-    this.servicio.getRoutines().subscribe((res: any) => {
+    const token = sessionStorage.getItem('token')
+    this.servicio.getRoutines(token).subscribe((res: any) => {
       console.log(res);
     });
   }
