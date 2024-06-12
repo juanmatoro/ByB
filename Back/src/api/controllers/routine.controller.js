@@ -1,11 +1,14 @@
 const Routine = require("../models/routine.model");
+const User = require("../models/user.model");
 const { HTTPSTATUSCODE } = require("../../utils/httpStatusCode");
 
 const createRoutine = async (req, res, next) => {
   try {
     const userId = req.user._id;
     // Crear la rutina
+  
     const routine = await Routine.create(req.body);
+    console.log(routine);
     // Actualizar el usuario con la nueva rutina
     const updateUser = await User.findByIdAndUpdate(
       userId,
