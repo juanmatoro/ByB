@@ -1,22 +1,16 @@
+// routinelist.component.ts
 import { Component } from '@angular/core';
-import { RoutinesService } from 'src/app/service/routines.service';
+import { ExerciseCartService } from 'src/app/service/exercise-cart.service';
 
 @Component({
   selector: 'app-routinelist',
   templateUrl: './routinelist.component.html',
-  styleUrls: ['./routinelist.component.scss']
+  styleUrls: ['./routinelist.component.scss'],
 })
 export class RoutinelistComponent {
+  constructor(private exerciseCartService: ExerciseCartService) {}
 
-  constructor(private servicio: RoutinesService) {}
-
-
-
-  ngOnInit() {
-    const token = sessionStorage.getItem('token')
-    this.servicio.getRoutines(token).subscribe((res: any) => {
-      console.log(res);
-    });
+  addToRoutine(exercise: any): void {
+    this.exerciseCartService.addExercise(exercise);
   }
-
 }

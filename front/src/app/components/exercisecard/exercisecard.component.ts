@@ -1,5 +1,5 @@
 import { ExerciseService } from 'src/app/service/exercise.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ExerciseCartService } from 'src/app/service/exercise-cart.service';
 
@@ -9,6 +9,8 @@ import { ExerciseCartService } from 'src/app/service/exercise-cart.service';
   styleUrls: ['./exercisecard.component.scss'],
 })
 export class ExercisecardComponent implements OnInit {
+  @Output() addToRoutine: EventEmitter<any> = new EventEmitter<any>();
+
   exercise: any = {};
   id: string = '';
 
@@ -28,8 +30,7 @@ export class ExercisecardComponent implements OnInit {
     });
   }
 
-  addToRoutine() {
-    console.log(this.exercise);
-    this.exerciseCartService.addExercise(this.exercise.data);
+  onAddToRoutine(): void {
+    this.addToRoutine.emit(this.exercise.data);
   }
 }

@@ -1,1 +1,9 @@
-<p>routinelist works!</p>
+<!-- routinelist.component.html -->
+<div class="routinelist-container">
+    <!-- Exercise Card Section -->
+    <app-exercisecard (addToRoutine)="addToRoutine($event)"></app-exercisecard>
+  
+    <!-- Exercise List Section -->
+    <app-exercise-list></app-exercise-list>
+  </div>
+  

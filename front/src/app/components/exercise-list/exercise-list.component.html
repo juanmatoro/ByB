@@ -1,9 +1,6 @@
 <!-- exercise-list.component.html -->
 <div *ngIf="exercises.length > 0" class="exercise-list-container">
-  <mat-card
-    *ngFor="let exercise of exercises; let i = index"
-    class="exercise-item"
-  >
+  <mat-card *ngFor="let exercise of exercises; let i = index" class="exercise-item">
     <mat-card-header class="exercise-header">
       <mat-card-title>{{ exercise.exerciseName }}</mat-card-title>
       <mat-card-subtitle>{{ exercise.muscle }}</mat-card-subtitle>
@@ -12,5 +9,5 @@
       </button>
     </mat-card-header>
   </mat-card>
-  <button type="submit" (click)="onSubmit()">Crear Rutina</button>
+  <button type="button" (click)="onSubmit()">Crear Rutina</button>
 </div>
