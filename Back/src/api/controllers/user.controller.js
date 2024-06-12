@@ -16,7 +16,7 @@ const register = async (req, res, next) => {
     }
 
     const userDB = await user.save();
-    
+
     return res.status(201).json({
       status: 201,
       message: `User ${userDB.email} created`,
@@ -29,12 +29,11 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   try {
-   /*  console.log(req.body); */
-    const userInfo = await User.findOne({ email:req.body.email });
+    /*  console.log(req.body); */
+    const userInfo = await User.findOne({ email: req.body.email });
     /* console.log(req.body, userInfo) */
     //(bcrypt.compareSync(req.body.password, userInfo.password));
     if (bcrypt.compareSync(req.body.password, userInfo.password)) {
-  
       userInfo.password = "*************"; // ocultamos el dato password en la respuesta por seguridad
       const token = jwt.sign(
         {
@@ -57,7 +56,7 @@ const login = async (req, res, next) => {
       });
     }
   } catch (error) {
-    return next("error",error);
+    return next("error", error);
   }
 };
 
@@ -73,12 +72,29 @@ const logout = (req, res, next) => {
   }
 };
 
-const checksession = (req, res) =>{
+const checksession = (req, res) => {
   try {
-    console.log("Token Session",req);
-    return res.status(200).json(req.user)
+    console.log("Token Session", req);
+    return res.status(200).json(req.user);
   } catch (error) {
-    return res.status(500).json(error)
+    return res.status(500).json(error);
   }
-}
-module.exports = { register, login, logout, checksession };
+};
+
+const getUserById = async (req, res, next) => {
+  try {
+    const User = await Exercise.findById(req.params.id);
+    if (exercise) {
+      res.status(200).json({
+        status: 200,
+        message: HTTPSTATUSCODE[200],
+        data: exercise,
+      });
+    } else {
+      res.status(404).json({ status: 404, message: "User not found" });
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+module.exports = { register, login, logout, checksession, getUserById };
