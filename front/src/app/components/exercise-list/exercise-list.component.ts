@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Routine } from 'src/app/models/routine';
 import { ExerciseService } from './../../service/exercise.service';
 import { RoutinesService } from './../../service/routines.service';
@@ -11,24 +12,23 @@ import { ExerciseCartService } from 'src/app/service/exercise-cart.service';
   styleUrls: ['./exercise-list.component.scss'],
 })
 export class ExerciseListComponent implements OnInit {
+  isVisible: boolean = true;
+
   exercises: any[] = [];
 
-
-
-  constructor(private exerciseCartService: ExerciseCartService, private RoutinesService: RoutinesService
+  constructor(private exerciseCartService: ExerciseCartService, private RoutinesService: RoutinesService, private router: Router
   ) {}
 
   ngOnInit(): void { 
     console.log(this.exercises);
-    // Inicializar la lista de ejercicios desde el servicio
     this.exercises = this.exerciseCartService.getExercises();
   }
  
 
-  // Método para eliminar un ejercicio
+  
   removeExercise(index: number): void {
     this.exerciseCartService.removeExercise(index);
-    this.exercises = this.exerciseCartService.getExercises(); // Actualizar la lista después de eliminar
+    this.exercises = this.exerciseCartService.getExercises(); 
   }
 
     onSubmit(): void {
@@ -36,16 +36,21 @@ export class ExerciseListComponent implements OnInit {
       const userId = sessionStorage.getItem('id')
       const token = sessionStorage.getItem('token')
       const newRoutine: Routine = {
-        name: '', // Puedes obtener este valor de un formulario, por ejemplo
-        date: '', // Fecha actual, puedes ajustarla según sea necesario
-        comment: 'Esta es una nueva rutina', // Puedes obtener este valor de un formulario
-        owner: userId, // ID del dueño, puedes obtener este valor según tu lógica de negocio
+        name: '', 
+        date: '', 
+        comment: 'Esta es una nueva rutina', 
+        owner: userId, 
         exercise: this.exercises.map(exercise => exercise._id),
       };
       this.RoutinesService.createRoutine(newRoutine, token).subscribe((res) => {
         console.log(res);
         
       });
+    }
+
+    navigateToRoutineList() {
+      this.router.navigate(['/routine-list']);
+      this.isVisible = false; // Oculta el componente
     }
    
 }

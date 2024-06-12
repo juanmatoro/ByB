@@ -1,5 +1,5 @@
 <!-- exercise-list.component.html -->
-<div *ngIf="exercises.length > 0" class="exercise-list-container">
+<div *ngIf="exercises.length > 0 && isVisible" class="exercise-list-container">
   <mat-card
     *ngFor="let exercise of exercises; let i = index"
     class="exercise-item"
@@ -12,5 +12,7 @@
       </button>
     </mat-card-header>
   </mat-card>
-  <button type="submit" (click)="onSubmit()">Crear Rutina</button>
+  <button type="submit" (click)="navigateToRoutineList()" class="submit-button">
+    Crear Rutina
+  </button>
 </div>

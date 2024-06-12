@@ -32,6 +32,10 @@ export class ExercisecardComponent implements OnInit {
     });
   }
 
+  goToExerciseList(): void {
+    this.router.navigate(['/lista']);
+  }
+
   addToRoutine(): void {
     this.exerciseCartService.addExercise(this.exercise.data);
     this.router.navigate(['/routines']); // Navega a la página de rutinas
