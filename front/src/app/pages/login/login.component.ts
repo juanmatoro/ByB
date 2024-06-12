@@ -23,8 +23,10 @@ export class LoginComponent {
   onSubmit(): void {
     this.userService.login(this.user).subscribe(
       (res) => {
-        console.log(res.data.token);
+        console.log(res.data);
         sessionStorage.setItem('token', res.data.token)
+        sessionStorage.setItem('name', res.data.user.name)
+        sessionStorage.setItem('id', res.data.user._id)
         this.router.navigate(['/prueba'])
       },
       (err) => {

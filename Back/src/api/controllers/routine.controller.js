@@ -3,20 +3,30 @@ const { HTTPSTATUSCODE } = require("../../utils/httpStatusCode");
 
 const createRoutine = async (req, res, next) => {
   try {
+    const userId = req.user._id;
+    // Crear la rutina
     const routine = await Routine.create(req.body);
+    // Actualizar el usuario con la nueva rutina
+    const updateUser = await User.findByIdAndUpdate(
+      userId,
+      { $push: { favRoutines: routine._id } },
+      { new: true }
+    );
+    // Enviar respuesta al cliente
     res.status(201).json({
       status: 201,
       message: HTTPSTATUSCODE[201],
       data: routine,
     });
   } catch (error) {
+    // Manejar errores específicos
     next(error);
   }
 };
 
 const getAllRoutines = async (req, res, next) => {
   try {
-    const routines = await Routine.find();
+    const routines = await Routine.findById(req.user._id).populate("exercises"); //el req.user._id debe venir del isAuth//
     res.status(200).json({
       status: 200,
       message: HTTPSTATUSCODE[200],
@@ -28,9 +38,11 @@ const getAllRoutines = async (req, res, next) => {
 };
 
 const getRoutineById = async (req, res, next) => {
+  console.log(req);
   try {
     const routine = await Routine.findById(req.params.id);
     if (routine) {
+      console.log(routine);
       res.status(200).json({
         status: 200,
         message: HTTPSTATUSCODE[200],

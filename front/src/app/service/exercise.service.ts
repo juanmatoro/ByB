@@ -29,7 +29,7 @@ export class ExerciseService {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
   postExercise(newExercise: Exercise  ) {
-    return this.http.post(this.baseUrl, newExercise);
+    return this.http.post(`${this.baseUrl}/createExercise`, newExercise);
   }
   deleteExercise(id: string) {
     return this.http.delete(`${this.baseUrl}/${id}`);

@@ -8,6 +8,7 @@ export class ExerciseCartService {
 
   addExercise(exercise: any) {
     this.exercises.push(exercise);
+    console.log(this.exercises);
   }
 
   getExercises() {

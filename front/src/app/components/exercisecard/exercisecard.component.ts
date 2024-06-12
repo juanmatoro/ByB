@@ -29,6 +29,7 @@ export class ExercisecardComponent implements OnInit {
   }
 
   addToRoutine() {
-    this.exerciseCartService.addExercise(this.exercise);
+    console.log(this.exercise);
+    this.exerciseCartService.addExercise(this.exercise.data);
   }
 }
