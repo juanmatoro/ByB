@@ -9,16 +9,16 @@ const newdate = `${date.getDate()}/${
 const routineSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: false,
   },
   date: {
     type: String,
-    required: true,
+    required: false,
     default: newdate,
   },
   comment: {
     type: String,
-    required: true,
+    required: false,
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
