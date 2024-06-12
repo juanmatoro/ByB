@@ -19,3 +19,17 @@ form {
 
   }
 
+  .login-component {
+    height: 100vh; /* Establece la altura del componente al 100% del viewport height */
+    display: flex; /* Utiliza flexbox para ocupar todo el espacio vertical */
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+  }
+
+  .register-card {
+    max-width: 500px; /* Aumenta el tamaño máximo de la tarjeta */
+    width: 100%; /* Asegura que la tarjeta ocupe todo el ancho disponible */
+    margin: auto; /* Centra la tarjeta horizontalmente */
+    padding: 2rem;
+  }
+

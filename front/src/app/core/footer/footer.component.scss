@@ -12,3 +12,15 @@ footer{
     background-size: cover;
 
 }
+a svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    vertical-align: middle;
+    transition: transform 0.2s;
+  }
+  
+  a svg:hover {
+    transform: scale(1.1);
+  }
+  
