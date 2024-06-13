@@ -1,7 +1,7 @@
+import { Router } from '@angular/router';
 import { Routine } from 'src/app/models/routine';
 import { ExerciseService } from './../../service/exercise.service';
 import { RoutinesService } from './../../service/routines.service';
-// exercise-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ExerciseCartService } from 'src/app/service/exercise-cart.service';
 
@@ -16,7 +16,7 @@ export class ExerciseListComponent implements OnInit {
 
 
   constructor(private exerciseCartService: ExerciseCartService, private RoutinesService: RoutinesService
-  ) {}
+  , private router:Router) {}
 
   ngOnInit(): void { 
     console.log(this.exercises);
@@ -45,6 +45,9 @@ export class ExerciseListComponent implements OnInit {
         console.log(res);
         
       });
+      this.exercises = [];
+       this.router.navigate(['/user']);
+
     }
    
 }

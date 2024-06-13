@@ -1,10 +1,16 @@
 <div class="container">
+  <div class="welcome-message">
+    Bienvenido a Build Your Body {{ userObj.name }}
+  </div>
 
-    <div>Bienvenido a Build Your Body {{userObj.name}}</div>
-    <div *ngFor="let rutine of userObj.favRoutines">
-        
-        {{userObj.favRoutines}}</div>
-
-    <div></div>
-
+  <div class="routines-list">
+    <div class="routine-item" *ngFor="let routine of userObj.favRoutines">
+      <div class="exercises-list">
+        <div class="exercise-item" *ngFor="let exercise of routine.exercise">
+          <div class="exercise-name">Nombre: {{ exercise.exerciseName }}</div>
+          <div class="exercise-muscle">Músculo: {{ exercise.muscle }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

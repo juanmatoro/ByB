@@ -1,31 +1,51 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
+import { RoutinesService } from 'src/app/service/routines.service';
+import { Routine } from 'src/app/models/routine';
+
 
 @Component({
   selector: 'app-user-home',
   templateUrl: './user-home.component.html',
   styleUrls: ['./user-home.component.scss']
 })
-export class UserHomeComponent {
+export class UserHomeComponent implements OnInit {
+  
   private token: string | null;
   private id: string | null;
-  public userObj: any;
-  constructor(private userService: UserService, private router: Router) {
+  public userObj: { name: string, favRoutines: Routine[] } = { name: '', favRoutines: [] };
+
+  constructor(private userService: UserService, private routinesService: RoutinesService, private router: Router) {
     this.token = sessionStorage.getItem('token');
     this.id = sessionStorage.getItem('ids');
   }
 
   ngOnInit() {
     this.userService.getuserbyid(this.id, this.token).subscribe(
-      (res) => {
+      (res: { data: { name: string } }) => { // Asegúrate de definir correctamente el tipo de respuesta del userService
         console.log(res);
-        this.userObj = res.data
+        this.userObj.name = res.data.name;
+        this.loadRoutines();
       },
       (err) => {
-          console.error('A tu casa', err);
-          this.router.navigate(['/login']); // Redirigir en caso de error también
-        }
+        console.error('Error fetching user data', err);
+        this.router.navigate(['/login']);
+      }
     );
+  }
+
+  loadRoutines() {
+    if (this.token) {
+      this.routinesService.getRoutines(this.token).subscribe(
+        (res: { data: Routine[] }) => {
+          console.log(res);
+          this.userObj.favRoutines = res.data;
+        },
+        (err) => {
+          console.error('Error fetching routines', err);
+        }
+      );
+    }
   }
 }
