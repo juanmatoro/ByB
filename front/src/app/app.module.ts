@@ -27,6 +27,7 @@ import { ExerciseListComponent } from './components/exercise-list/exercise-list.
 import { authGuard } from './guards/auth-guard.guard';
 import { AuthInterceptor } from './guards/auth.interceptor';
 import { RoutinelistComponent } from './components/routinelist/routinelist.component';
+import { UserHomeComponent } from './pages/user-home/user-home.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { RoutinelistComponent } from './components/routinelist/routinelist.compo
     SafeUrlPipe,
     ExerciseListComponent,
     RoutinelistComponent,
+    UserHomeComponent,
   ],
   imports: [
     BrowserModule,

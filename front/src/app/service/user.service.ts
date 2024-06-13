@@ -31,4 +31,13 @@ export class UserService {
     return this.http.get<any>(`${this.baseUrl}/checksession`, { headers });
   }
 
+  getuserbyid(id:any, token: string | null){
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+    const options = { headers: headers }; // Objeto de opciones con los encabezados
+    return this.http.get<any>(`${this.baseUrl}/user`, options);
+  }
+
 }

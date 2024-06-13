@@ -1,15 +1,13 @@
-import { Component,  } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 
-
 @Component({
-  selector: 'app-favorite',
-  templateUrl: './favorite.component.html',
-  styleUrls: ['./favorite.component.scss']
+  selector: 'app-user-home',
+  templateUrl: './user-home.component.html',
+  styleUrls: ['./user-home.component.scss']
 })
-export class FavoriteComponent {
-
+export class UserHomeComponent {
   private token: string | null;
 
   constructor(private userService: UserService, private router: Router) {

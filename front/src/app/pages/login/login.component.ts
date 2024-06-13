@@ -25,6 +25,7 @@ export class LoginComponent {
     this.userService.login(this.user).subscribe(
       (res) => {
         console.log(res.data);
+        localStorage.setItem('token', res.data.token)
         sessionStorage.setItem('token', res.data.token)
         sessionStorage.setItem('name', res.data.user.name)
         sessionStorage.setItem('id', res.data.user._id)

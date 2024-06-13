@@ -81,4 +81,26 @@ const checksession = (req, res) =>{
     return res.status(500).json(error)
   }
 }
-module.exports = { register, login, logout, checksession };
+
+const getUserById = async (req, res, next) => {
+  console.log(res.body);
+  console.log(req.user);
+  if (condition) {
+    
+  }
+  try {
+    const user = await User.findById(req.params.id);
+    if (user) {
+      res.status(200).json({
+        status: 200,
+        message: HTTPSTATUSCODE[200],
+        data: user,
+      });
+    } else {
+      res.status(404).json({ status: 404, message: "User not found" });
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+module.exports = { register, login, logout, checksession, getUserById };
