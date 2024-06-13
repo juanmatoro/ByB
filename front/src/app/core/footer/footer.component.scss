@@ -6,12 +6,14 @@ footer{
 }
 
 
-.d-flex{
-    background-image: url('../../../assets/header1.jpg');
-    background-position: unset;
-    background-repeat: no-repeat;
-    background-size: cover;
+.d-flex, .me-5 {
+   
+    background: transparent;
+    border-bottom: solid 2px #fff;
 
+}
+.mt-3 {
+  background-color: rgba(0, 0, 0, 0.207);
 }
 a svg {
     width: 24px;
