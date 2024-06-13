@@ -5,6 +5,7 @@ const isAuth = async(req,res,next) => { /* esta función verifica el TOKEN del u
 
     try {
         const authorization = req.headers.authorization;
+        //console.log(req.headers);
         if(!authorization){ /* si no hay autorización ... mensaje error */ 
             return res.status(401).json({message:"No estás autorizado."})
         }

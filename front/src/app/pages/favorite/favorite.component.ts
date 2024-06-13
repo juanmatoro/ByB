@@ -15,16 +15,6 @@ export class FavoriteComponent {
   constructor(private userService: UserService, private router: Router) {
     this.token = sessionStorage.getItem('token');
   }
-  private  APIHeaders = {
-    Accept:"aplication/json",
-    "Content-Type": "aplication/json",
-    "Access-Control-Allow-Origin":"*",
-    Authorization:{
-        toString(){
-            return `Bearer ${sessionStorage.getItem('token')}`;
-        }
-    }
-  }
 
   ngOnInit() {
     this.userService.checksession(this.token).subscribe(

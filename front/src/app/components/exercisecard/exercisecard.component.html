@@ -11,7 +11,7 @@
         ><span>Nivel: </span>{{ exercise.data.level }}</mat-card-subtitle
       >
     </mat-card-header>
-    <!-- <img mat-card-image [src]="exercise.url" alt="{{ exercise.exerciseName }}"> -->
+
     <div class="video-container">
       <video
         allowfullscreen="allowfullscreen"
@@ -29,10 +29,9 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button class="btn-blue" mat-button>Favorite</button>
-      <button class="btn-blue" mat-button (click)="addToRoutine()">
-        Add to routine
-      </button>
+      <button class="btn-blue" mat-button (click)="addToRoutine()">Add to routine</button>
+      <button class="btn-blue" mat-button (click)="goToExerciseList()">Return</button>       
     </mat-card-actions>
   </mat-card>
 </section>
+

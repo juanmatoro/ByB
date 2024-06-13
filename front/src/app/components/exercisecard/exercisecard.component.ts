@@ -1,6 +1,6 @@
 import { ExerciseService } from 'src/app/service/exercise.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ExerciseCartService } from 'src/app/service/exercise-cart.service';
 
 @Component({
@@ -15,7 +15,8 @@ export class ExercisecardComponent implements OnInit {
   constructor(
     private service: ExerciseService,
     private route: ActivatedRoute,
-    private exerciseCartService: ExerciseCartService
+    private exerciseCartService: ExerciseCartService,
+    private router: Router,
   ) {
     this.route.params.subscribe((params) => {
       this.id = params['id'];
@@ -29,6 +30,14 @@ export class ExercisecardComponent implements OnInit {
   }
 
   addToRoutine() {
-    this.exerciseCartService.addExercise(this.exercise);
+    console.log(this.exercise);
+    this.exerciseCartService.addExercise(this.exercise.data);
   }
+
+  goToExerciseList(): void {
+    this.router.navigate(['/lista']);
+  }
+  
 }
+
+

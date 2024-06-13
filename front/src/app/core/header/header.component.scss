@@ -1,3 +1,33 @@
-.example-spacer {
+.header {
+    background-image: url('../../../assets/banner2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    height: 64px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  }
+  
+  
+ 
+  
+  .title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: #fff; 
+    margin-right: auto;
+  }
+  
+  .example-spacer {
     flex: 1 1 auto;
-}
+  }
+
+  .logo {
+    height: 70px; 
+    width: auto;
+    vertical-align: middle; 
+  }
+  

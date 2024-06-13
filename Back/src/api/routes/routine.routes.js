@@ -7,10 +7,11 @@ const {
   updateRoutine,
   deleteRoutine,
 } = require("../controllers/routine.controller");
+const { isAuth } = require("../middlewares/auth.middleware");
 
 // Ruta para crear un nuevo ejercicio
-routineRouter.post("/createRoutine", createRoutine);
-routineRouter.get("/getRoutines", getAllRoutines);
+routineRouter.post("/createroutine", [isAuth],createRoutine);
+routineRouter.get("/getRoutines", [isAuth],getAllRoutines);
 routineRouter.get("/:id", getRoutineById);
 routineRouter.put("/:id", updateRoutine);
 routineRouter.delete("/:id", deleteRoutine);

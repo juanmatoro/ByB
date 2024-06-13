@@ -1,0 +1,29 @@
+footer{
+    background-image: url('../../../assets/header1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.d-flex, .me-5 {
+   
+    background: transparent;
+    border-bottom: solid 2px #fff;
+
+}
+.mt-3 {
+  background-color: rgba(0, 0, 0, 0.207);
+}
+a svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    vertical-align: middle;
+    transition: transform 0.2s;
+  }
+  
+  a svg:hover {
+    transform: scale(1.1);
+  }
+  
