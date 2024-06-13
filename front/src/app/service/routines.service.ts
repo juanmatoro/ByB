@@ -41,7 +41,6 @@ export class RoutinesService {
     const options = { headers: headers };
     return this.http.get(`${this.baseUrl}/getRoutines`, options);
   }
-
   
   deleteRoutine(): Observable<any> {
     return this.http.delete(`${this.baseUrl}/deleteRoutine`);

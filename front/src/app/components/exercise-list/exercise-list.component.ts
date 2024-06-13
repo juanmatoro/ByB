@@ -34,6 +34,11 @@ export class ExerciseListComponent implements OnInit {
       const ids = this.exercises.map(objeto => objeto._id);
       const userId = sessionStorage.getItem('id')
       const token = sessionStorage.getItem('token')
+      if (!userId || !token) {
+        
+        alert('No estás registrado. Por favor, inicia sesión para continuar.');
+        return; 
+      }
       const newRoutine: Routine = {
         name: '', 
         date: '', 
