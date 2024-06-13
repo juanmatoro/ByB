@@ -1,9 +1,10 @@
 body, html {
     height: 100%;
-    margin: 0 auto;
-    padding: 0 auto;
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
 }
+
 .bg {
     background-image: url('../../../assets/home1.jpg');
     height: 100vh;
@@ -16,12 +17,32 @@ body, html {
     color: white;
     text-align: center;
     padding: 20px;
+    position: relative;
 }
+
+.bg::before {
+    content: "";
+    background-image: url('../../../assets/logo.png');
+    background-size: 60vw 80vh; 
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.2; /* Ajusta la opacidad según sea necesario */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw; 
+    height: 50vh; 
+    z-index: 1;
+}
+
 .content {
     background: rgba(0, 0, 0, 0.5);
     padding: 20px;
     border-radius: 10px;
     animation: fadeIn 2s ease-in-out;
+    position: relative;
+    z-index: 2;
 }
 
 h1 {
