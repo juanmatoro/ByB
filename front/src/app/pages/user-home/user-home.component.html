@@ -6,7 +6,7 @@
   <div class="routines-list">
     <div class="routine-item" *ngFor="let routine of userObj.favRoutines">
       <div class="exercises-list">
-        <div class="exercise-item" *ngFor="let exercise of routine.exercise">
+        <div class="exercise-item"  *ngFor="let exercise of routine.exercise" [routerLink]="'/lista/'+[exercise._id]">
           <div class="exercise-name">Nombre: {{ exercise.exerciseName }}</div>
           <div class="exercise-muscle">Músculo: {{ exercise.muscle }}</div>
 

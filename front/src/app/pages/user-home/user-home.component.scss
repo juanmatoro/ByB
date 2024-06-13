@@ -32,13 +32,23 @@
   .exercise-item {
     border-bottom: 1px solid #eee;
     padding: 8px 0;
+    cursor: pointer;
+    margin-bottom: 8px;
+  }
+  .exercise-item:hover {
+    border-bottom: 1px solid #010101;
+    color: #fff !important;
+    background-color: #010101;
+    padding: 8px 10px;
+    cursor: pointer;
+    margin-bottom: 8px;
   }
   
-  .exercise-muscle {
-    color: #666;
-  }
+  // .exercise-muscle {
+  //   color: #666;
+  // }
   
-  .exercise-name {
-    color: #030303;
-    font-weight: bold;
-  }
+  // .exercise-name {
+  //   color: #030303;
+  //   font-weight: bold;
+  // }
