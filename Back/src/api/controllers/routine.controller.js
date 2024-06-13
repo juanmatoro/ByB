@@ -6,7 +6,7 @@ const createRoutine = async (req, res, next) => {
   try {
     const userId = req.user._id;
     // Crear la rutina
-  
+
     const routine = await Routine.create(req.body);
     console.log(routine);
     // Actualizar el usuario con la nueva rutina
@@ -28,14 +28,15 @@ const createRoutine = async (req, res, next) => {
 };
 
 const getAllRoutines = async (req, res, next) => {
+  const idUsuario = req.user._id;
   try {
-   
-    const routines = await Routine.find().populate('exercise'); //el req.user._id debe venir del isAuth//
-    console.log(routines);
-    
+    const routines = await Routine.find({ owner: idUsuario }).populate(
+      "exercise"
+    );
+
     res.status(200).json({
       status: 200,
-      message: HTTPSTATUSCODE[200],
+      message: "Routines found",
       data: routines,
     });
   } catch (error) {
