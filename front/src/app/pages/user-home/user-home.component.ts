@@ -9,19 +9,18 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class UserHomeComponent {
   private token: string | null;
-
+  private id: string | null;
+  public userObj: any;
   constructor(private userService: UserService, private router: Router) {
     this.token = sessionStorage.getItem('token');
+    this.id = sessionStorage.getItem('ids');
   }
 
   ngOnInit() {
-    this.userService.checksession(this.token).subscribe(
+    this.userService.getuserbyid(this.id, this.token).subscribe(
       (res) => {
         console.log(res);
-        if (res.data) {
-          console.log("falso");
-          this.router.navigate(['/login']);
-        }
+        this.userObj = res.data
       },
       (err) => {
           console.error('A tu casa', err);
