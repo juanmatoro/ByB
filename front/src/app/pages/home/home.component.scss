@@ -50,9 +50,9 @@ h1 {
 }
 
 .btn {
-    background-color: white;
-    color: #007bff;
-    border: 2px solid #007bff;
+    background-color: rgb(218, 216, 216);
+    color: #2a2b2d;
+    border: 2px solid #2a2b2d;
     padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
@@ -64,7 +64,7 @@ h1 {
 }
 
 .btn:hover {
-    background-color: #007bff;
+    background-color: #000000;
     color: white;
     transform: scale(1.05);
 }
