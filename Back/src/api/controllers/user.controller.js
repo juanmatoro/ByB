@@ -83,13 +83,9 @@ const checksession = (req, res) =>{
 }
 
 const getUserById = async (req, res, next) => {
-  console.log(res.body);
-  console.log(req.user);
-  if (condition) {
-    
-  }
+  
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.user._id);
     if (user) {
       res.status(200).json({
         status: 200,
