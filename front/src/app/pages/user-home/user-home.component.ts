@@ -23,9 +23,9 @@ export class UserHomeComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getuserbyid(this.id, this.token).subscribe(
-      (res: { data: { name: string } }) => { // Asegúrate de definir correctamente el tipo de respuesta del userService
+      (res) => {
         console.log(res);
-        this.userObj.name = res.data.name;
+        this.userObj = res.data;
         this.loadRoutines();
       },
       (err) => {
@@ -38,9 +38,9 @@ export class UserHomeComponent implements OnInit {
   loadRoutines() {
     if (this.token) {
       this.routinesService.getRoutines(this.token).subscribe(
-        (res: { data: Routine[] }) => {
+        (res) => {
           console.log(res);
-          this.userObj.favRoutines = res.data;
+          this.userObj.favRoutines = res.data; // Asumiendo que las rutinas están en res.data
         },
         (err) => {
           console.error('Error fetching routines', err);

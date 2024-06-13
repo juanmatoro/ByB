@@ -28,9 +28,10 @@ const createRoutine = async (req, res, next) => {
 };
 
 const getAllRoutines = async (req, res, next) => {
-  const idUsuario= req.user._id;
   try {
-    const routines = await routines.find({idUsuario: valor}).populate(exercise); //el req.user._id debe venir del isAuth//
+   
+    const routines = await Routine.find().populate('exercise'); //el req.user._id debe venir del isAuth//
+    console.log(routines);
     
     res.status(200).json({
       status: 200,

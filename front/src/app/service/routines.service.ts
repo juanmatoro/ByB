@@ -33,15 +33,14 @@ export class RoutinesService {
     return this.http.post(`${this.baseUrl}/createroutine`, newRoutine, options);
   }
 
-  getRoutines(token: string | null): Observable<{ data: Routine[] }> {
+  getRoutines(token: string | null): Observable<any> {
     let headers = new HttpHeaders();
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
     const options = { headers: headers };
-    return this.http.get<{ data: Routine[] }>(`${this.baseUrl}/getRoutines`, options);
+    return this.http.get(`${this.baseUrl}/getRoutines`, options);
   }
-
   
   deleteRoutine(): Observable<any> {
     return this.http.delete(`${this.baseUrl}/deleteRoutine`);
