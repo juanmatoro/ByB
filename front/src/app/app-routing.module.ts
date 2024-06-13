@@ -8,6 +8,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { authGuard } from './guards/auth-guard.guard';
 import { RoutinelistComponent } from './components/routinelist/routinelist.component';
+import { UserHomeComponent } from './pages/user-home/user-home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'lista/:id', component: ExercisecardComponent },
   {path: 'routines', component: RoutinelistComponent},
   { path: 'prueba', component: FavoriteComponent, canActivate:[authGuard]},
+  { path: 'user', component: UserHomeComponent, canActivate:[authGuard]},
 ];
 
 @NgModule({
