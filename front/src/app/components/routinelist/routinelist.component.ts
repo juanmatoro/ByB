@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { RoutinesService } from 'src/app/service/routines.service';
 
 @Component({
@@ -7,14 +8,21 @@ import { RoutinesService } from 'src/app/service/routines.service';
   styleUrls: ['./routinelist.component.scss']
 })
 export class RoutinelistComponent {
+  private token: string | null;
+  id: string = '';
 
-  constructor(private servicio: RoutinesService) {}
+  constructor(private servicio: RoutinesService,   private route: ActivatedRoute,) {
+    this.token = sessionStorage.getItem('token')
+    this.route.params.subscribe((params) => {
+      this.id = params['id'];
+    });
+  }
 
 
 
   ngOnInit() {
-    const token = sessionStorage.getItem('token')
-    this.servicio.getRoutines(token).subscribe((res: any) => {
+
+    this.servicio.getRoutines(this.token).subscribe((res: any) => {
       console.log(res);
     });
   }

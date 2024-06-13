@@ -22,9 +22,9 @@ const routineSchema = new mongoose.Schema({
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: "User",  // Referencia al modelo User si existe
   },
-  exercise: [{ type: mongoose.Schema.Types.ObjectId, ref: "Exercise" }],
+  exercise: [{ type: mongoose.Schema.Types.ObjectId, ref: "Exercise" }],  // Referencia al modelo Exercise
 });
 
 const Routine = mongoose.model("Routine", routineSchema);

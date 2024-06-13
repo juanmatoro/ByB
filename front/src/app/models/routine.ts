@@ -4,5 +4,5 @@ export interface Routine {
     date?: any;
     comment?: any;
     owner?: any;
-    exercise: any[];
+    exercises: any[];
 }

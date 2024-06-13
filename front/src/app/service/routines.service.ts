@@ -41,7 +41,15 @@ export class RoutinesService {
     const options = { headers: headers }; // Objeto de opciones con los encabezados
     return this.http.get(`${this.baseUrl}/getRoutines`, options);
   }
-
+  getRoutineById(token: string | null, id: string | null): Observable<any> {
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+    const options = { headers: headers }; // Objeto de opciones con los encabezados
+    return this.http.get(`${this.baseUrl}/${id}`, options);
+  }
+  
   
   deleteRoutine(): Observable<any> {
     return this.http.delete(`${this.baseUrl}/deleteRoutine`);

@@ -28,10 +28,11 @@ const createRoutine = async (req, res, next) => {
 };
 
 const getAllRoutines = async (req, res, next) => {
-  const idUsuario= req.user._id;
+ 
   try {
-    const routines = await routines.find({idUsuario: valor}).populate(exercise); //el req.user._id debe venir del isAuth//
-    
+    const routines = await Routine.find().populate("exercise"); //el req.user._id debe venir del isAuth//
+    console.log(routines);
+
     res.status(200).json({
       status: 200,
       message: HTTPSTATUSCODE[200],
@@ -43,21 +44,16 @@ const getAllRoutines = async (req, res, next) => {
 };
 
 const getRoutineById = async (req, res, next) => {
-  console.log(req);
   try {
     const routine = await Routine.findById(req.params.id);
     if (routine) {
-      console.log(routine);
       res.status(200).json({
         status: 200,
         message: HTTPSTATUSCODE[200],
         data: routine,
       });
     } else {
-      res.status(404).json({
-        status: 404,
-        message: HTTPSTATUSCODE[404],
-      });
+      res.status(404).json({ status: 404, message: "routine not found" });
     }
   } catch (error) {
     next(error);
@@ -65,6 +61,7 @@ const getRoutineById = async (req, res, next) => {
 };
 
 const updateRoutine = async (req, res, next) => {
+
   try {
     const routine = await Routine.findByIdAndUpdate(req.params.id, req.body, {
       new: true,

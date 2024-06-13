@@ -12,7 +12,7 @@ const { isAuth } = require("../middlewares/auth.middleware");
 // Ruta para crear un nuevo ejercicio
 routineRouter.post("/createroutine", [isAuth],createRoutine);
 routineRouter.get("/getRoutines", [isAuth],getAllRoutines);
-routineRouter.get("/:id", getRoutineById);
+routineRouter.get("/:id", [isAuth],getRoutineById);
 routineRouter.put("/:id", updateRoutine);
 routineRouter.delete("/:id", deleteRoutine);
 

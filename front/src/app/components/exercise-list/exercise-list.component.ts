@@ -39,7 +39,7 @@ export class ExerciseListComponent implements OnInit {
         date: '', 
         comment: 'Esta es una nueva rutina', 
         owner: userId, 
-        exercise: this.exercises.map(exercise => exercise._id),
+        exercises: this.exercises.map(exercise => exercise._id),
       };
       this.RoutinesService.createRoutine(newRoutine, token).subscribe((res) => {
         console.log(res);

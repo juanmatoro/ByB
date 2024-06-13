@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-
+const { Schema } = mongoose;
 const {
   validationPassword,
   validationEmail,
@@ -9,7 +9,7 @@ const {
 
 const urlProfile = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fstock.adobe.com%2Fsearch%3Fk%3Dperson%2Bicon&psig=AOvVaw1VGhjBKxhgRFhGWJEDr6s6&ust=1717525660073000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPiw7OmHwIYDFQAAAAAdAAAAABAE"
 
-const userSchema = new mongoose.Schema({
+const userSchema = Schema({
   name: {
     type: String,
     trim: false,
