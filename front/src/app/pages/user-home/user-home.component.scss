@@ -32,6 +32,16 @@
   .exercise-item {
     border-bottom: 1px solid #eee;
     padding: 8px 0;
+    cursor: pointer;
+    margin-bottom: 8px;
+  }
+  .exercise-item:hover {
+    border-bottom: 1px solid #010101;
+    color: #fff;
+    background-color: #010101;
+    padding: 8px 0;
+    cursor: pointer;
+    margin-bottom: 8px;
   }
   
   .exercise-muscle {
